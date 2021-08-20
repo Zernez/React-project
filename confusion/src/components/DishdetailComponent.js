@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody,
     CardTitle } from 'reactstrap';
-
-class Dishdetail extends Component {
     
-    constructor(props) {
-        super(props);
-        }
-    
-    renderDish(dish) {
+        function RenderDish({dish}) {
         if (dish != null) {
             
             return(
@@ -31,18 +25,18 @@ class Dishdetail extends Component {
             
         }
     
-    renderComments(dish) {
-        if (dish != null) {
+        function RenderComments({comments}) {
+        if (comments != null) {
             
             return (
                 <div>
                     <h4>Comments</h4>
-                    {dish.comments.map(function(name, index){
+                    {comments.map(function(name, index){
                     return (
                         <div className="list-unstyled">
-                        <p>{dish.comments[index].comment}</p>
-                        <p>--{dish.comments[index].author}, 
-                        {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(dish.comments.date)))}
+                        <p>{comments[index].comment}</p>
+                        <p>--{comments[index].author}, 
+                        {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comments.date)))}
                         </p>
                         </div>
                         );
@@ -57,7 +51,7 @@ class Dishdetail extends Component {
             }
         }
     
-    render() {
+        const  DishDetail = (props) => {
         return ( 
             <div className='container'>
                 <div className='row'>
@@ -65,7 +59,7 @@ class Dishdetail extends Component {
                     {this.renderComments(this.props.selectedDish)}
                 </div>
             </div>
-        );
+        )
     }
-}
-    export default Dishdetail;
+
+    export default DishDetail;
