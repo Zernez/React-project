@@ -51,12 +51,12 @@ import { Card, CardImg, CardText, CardBody,
             }
         }
     
-        const  DishDetail = (props) => {
+        const DishDetail = (props) => {
         return ( 
             <div className='container'>
                 <div className='row'>
-                    {this.renderDish(this.props.selectedDish)}
-                    {this.renderComments(this.props.selectedDish)}
+                    {this.renderDish(props.selectedDish)}
+                    {this.renderComments(props.selectedDish)}
                 </div>
             </div>
         )
