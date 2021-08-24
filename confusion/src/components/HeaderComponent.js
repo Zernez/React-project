@@ -5,6 +5,7 @@ import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
+
   constructor(props) {
       super(props);
   
@@ -28,7 +29,7 @@ class Header extends Component {
         this.setState({
           isModalOpen: !this.state.isModalOpen
         });
-      }
+    }
 
     handleLogin(event) {
         this.toggleModal();
