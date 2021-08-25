@@ -97,17 +97,6 @@ class CommentForm extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            rating: '',
-            name: '',
-            comment: '',
-            touched: {
-                rating: false,
-                yourname: false,
-                comment: false
-            }
-        }
-
         this.toggleNav = this.toggleNav.bind(this);
         this.state = {
           isNavOpen: false,
