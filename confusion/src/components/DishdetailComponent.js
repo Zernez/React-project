@@ -47,7 +47,7 @@ const DishDetail = (props) => {
             <div className="row">
                     <RenderDish dish={props.dish} />
                     <RenderComments comments={props.comments}
-                        addComment={props.addComment}
+                        postComment={props.postComment}
                         dishId={props.dish.id} />
             </div>
         </div>
@@ -82,7 +82,7 @@ function RenderDish({dish}) {
     }           
 }
 
-function RenderComments({comments, addComment, dishId}) {
+function RenderComments({comments, postComment, dishId}) {
 
     if (comments != null) {
         
@@ -101,7 +101,7 @@ function RenderComments({comments, addComment, dishId}) {
                     );
                 })}
                 </ul>
-                <CommentForm dishId={dishId} addComment={addComment} />                
+                <CommentForm dishId={dishId} postComment={postComment} />           
             </div>
             );                
     }
@@ -141,21 +141,21 @@ class CommentForm extends Component {
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render(){
        
         return(
-            <React.Fragment>
+            <div>
                 <Button outline onClick={this.toggleCommentFormModal}>
                     <span className="fa fa-comments fa-lg"></span> Submit Comment
                 </Button>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                 <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
                 <ModalBody>
-                <Form onSubmit={this.handleLogin}>
-                        <FormGroup>
+                <LocalForm onSubmit={this.handleLogin}>
+                        <Row className= "formGroup">
                             <Label htmlFor="rating">Rating</Label>
                             <Control.select model=".rating" name="rating" className="form-control">
                                 <option>1</option>
@@ -164,8 +164,8 @@ class CommentForm extends Component {
                                 <option>4</option>
                                 <option>5</option>
                             </Control.select>
-                        </FormGroup>
-                        <FormGroup>
+                        </Row>
+                        <Row className= "formGroup">
                         <Label htmlFor="name" md={2}>Your name</Label>
                         <Col md={10}>
                             <Control.text model=".name" id="name" name="name"
@@ -186,20 +186,20 @@ class CommentForm extends Component {
                                 }}
                              />
                         </Col>
-                        </FormGroup>
-                        <FormGroup>
+                        </Row>
+                        <Row className= "formGroup">
                         <Label htmlFor="comment" md={2}>Comment</Label>
                             <Col md={10}>
                                 <Control.textarea model=".comment" id="comment" name="comment"
                                     rows="8"
                                     className="form-control" />
                             </Col>
-                        </FormGroup>
+                        </Row>
                         <Button type="submit" value="submit" color="primary">Submit Comment</Button>
-                    </Form>                    
+                    </LocalForm>                    
                 </ModalBody>
                 </Modal>
-            </React.Fragment>
+            </div>
         );
     }
 }
