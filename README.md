@@ -1,4 +1,6 @@
-# React-project
+# React project for build the official conFusion Restaurant! 
+
+# A complete web-site built from the project course of Coursera and The Hong Kong Univerisity of Science and Technology. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
